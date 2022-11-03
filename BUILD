@@ -3,7 +3,7 @@ package(default_visibility = ["//visibility:public"])
 
 java_library(
     name="java-maven-lib",
-    srcs = glob(["src/main/java/**/*.java"]),
+    srcs = glob(["src/main/java/**/*.java","gen-java/**/*.java"]),
     deps = [
         "@maven//:org_apache_thrift_libthrift",
         "@maven//:org_slf4j_slf4j_api",
@@ -13,14 +13,14 @@ java_library(
 )
 java_binary(
     name = "client",
-    main_class = "src.main.com.demo.UserClient",
+    main_class = "com.demo.SimpleClient",
     runtime_deps=[":java-maven-lib"]
 )
 
 
 java_binary(
     name = "server",
-    main_class = "src.main.com.demo.UserService",
+    main_class = "com.demo.SimpleService",
     runtime_deps = [":java-maven-lib"]
 )
 
